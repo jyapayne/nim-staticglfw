@@ -1,7 +1,6 @@
-# You can use this nim template to jump start your nim library or project.
+# Nim wrapper for static glfw
 
-This template includes:
-* MIT licence
-* src directory and a private common.nim
-* test directory
-* GitHub Actions to run the tests on GitHub
+
+Another wrapper for glfw. Creates a static binary based on the C code in `src/glfw`.
+
+See example in the example directory for usage.

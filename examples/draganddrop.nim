@@ -12,15 +12,12 @@ window.makeContextCurrent()
 # This must be called to make any GL function work
 loadExtensions()
 
-let monitor = getPrimaryMonitor()
+proc dropCallback(window: Window, count: cint, paths: cstringArray) {.cdecl.} =
+  echo "dropCallback"
+  for i in 0 ..< count:
+    echo paths[i]
 
-var count: cint
-let vids = monitor.getVideoModes(count.addr)
-echo count
-for i in 0..<count:
-  echo vids[i]
-
-
+window.setDropCallback(dropCallback)
 
 # Run while window is open.
 while windowShouldClose(window) == 0:

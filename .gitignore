@@ -9,3 +9,6 @@ nimcache
 *.pdb
 *.ilk
 .*
+
+*.out
+.DS_Store
