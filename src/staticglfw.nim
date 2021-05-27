@@ -412,7 +412,7 @@ type
   Vkproc* = proc () {.cdecl.}
   Monitor* = ptr object
   Window* = ptr object
-  Cursor* = ptr object
+  CursorHandle* = ptr object
 
   ErrorFun* = proc (errorCode: cint; description: cstring) {.cdecl.} ##
     ## @brief The function pointer type for error callbacks.
@@ -3673,7 +3673,7 @@ proc setCursorPos*(window: Window; xpos: cdouble; ypos: cdouble) {.
   ##
   ##     @ingroup input
   ## ```
-proc createCursor*(image: ptr Image; xhot: cint; yhot: cint): Cursor {.
+proc createCursor*(image: ptr Image; xhot: cint; yhot: cint): CursorHandle {.
     importc: "glfwCreateCursor", cdecl.}
   ## ```
   ##   ! @brief Creates a custom cursor.
@@ -3712,7 +3712,7 @@ proc createCursor*(image: ptr Image; xhot: cint; yhot: cint): Cursor {.
   ##
   ##     @ingroup input
   ## ```
-proc createStandardCursor*(shape: cint): Cursor {.
+proc createStandardCursor*(shape: cint): CursorHandle {.
     importc: "glfwCreateStandardCursor", cdecl.}
   ## ```
   ##   ! @brief Creates a cursor with a standard shape.
@@ -3761,7 +3761,7 @@ proc createStandardCursor*(shape: cint): Cursor {.
   ##
   ##     @ingroup input
   ## ```
-proc destroyCursor*(cursor: Cursor) {.importc: "glfwDestroyCursor", cdecl.}
+proc destroyCursor*(cursor: CursorHandle) {.importc: "glfwDestroyCursor", cdecl.}
   ## ```
   ##   ! @brief Destroys a cursor.
   ##
@@ -3788,7 +3788,7 @@ proc destroyCursor*(cursor: Cursor) {.importc: "glfwDestroyCursor", cdecl.}
   ##
   ##     @ingroup input
   ## ```
-proc setCursor*(window: Window; cursor: Cursor) {.
+proc setCursor*(window: Window; cursor: CursorHandle) {.
     importc: "glfwSetCursor", cdecl.}
   ## ```
   ##   ! @brief Sets the cursor for the window.
